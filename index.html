@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Abdullah | Senior Software Engineer & Cloud Architect</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            cyan: '#06b6d4',
+                            accent: '#38bdf8',
+                            emerald: '#10b981',
+                            darkBg: '#090d16',
+                            cardBg: 'rgba(15, 23, 42, 0.65)'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 15px rgba(6, 182, 212, 0.2)' },
+                            '100%': { boxShadow: '0 0 30px rgba(6, 182, 212, 0.6)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Ambient Background Grid */
+        .bg-grid-pattern {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+
+        /* Glassmorphism Styles */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        .glass-nav {
+            background: rgba(9, 13, 22, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .neon-border-glow:hover {
+            border-color: rgba(6, 182, 212, 0.6);
+            box-shadow: 0 0 20px rgba(6, 182, 212, 0.25);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #090d16;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+    </style>
+</head>
+<body class="bg-[#090d16] text-slate-200 font-sans antialiased selection:bg-cyan-500 selection:text-white relative min-h-screen overflow-x-hidden">
+
+    <!-- Ambient Glowing Orbs Background -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-cyan-600/15 rounded-full blur-[140px] animate-pulse-slow"></div>
+        <div class="absolute bottom-[20%] right-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[160px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+        <div class="absolute top-[40%] left-[30%] w-[400px] h-[400px] bg-emerald-600/10 rounded-full blur-[150px] animate-pulse-slow" style="animation-delay: 1s;"></div>
+        <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-emerald-400 flex items-center justify-center text-slate-950 font-mono font-bold text-xl shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
+                    MA
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-slate-100 tracking-tight group-hover:text-cyan-400 transition-colors">Muhammad Abdullah</span>
+                    <span class="text-xs font-mono text-slate-400">Sr. Cloud & Microservices Architect</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-slate-300">
+                <a href="#about" class="hover:text-cyan-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cyan-400 hover:after:w-full after:transition-all">About</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cyan-400 hover:after:w-full after:transition-all">Experience</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cyan-400 hover:after:w-full after:transition-all">Skills</a>
+                <a href="#projects" class="hover:text-cyan-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cyan-400 hover:after:w-full after:transition-all">Projects</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-cyan-400 hover:after:w-full after:transition-all">Contact</a>
+            </nav>
+
+            <!-- Action CTA & Mobile Toggle -->
+            <div class="flex items-center gap-4">
+                <a href="#contact" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 hover:bg-cyan-500 hover:text-slate-950 transition-all shadow-sm">
+                    Let's Connect
+                </a>
+                
+                <button id="mobile-menu-btn" class="md:hidden p-2 text-slate-400 hover:text-white focus:outline-none" aria-label="Toggle Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-slate-800 px-6 py-6 space-y-4">
+            <a href="#about" class="block text-slate-300 hover:text-cyan-400 font-medium mobile-nav-link">About</a>
+            <a href="#experience" class="block text-slate-300 hover:text-cyan-400 font-medium mobile-nav-link">Experience</a>
+            <a href="#skills" class="block text-slate-300 hover:text-cyan-400 font-medium mobile-nav-link">Skills</a>
+            <a href="#projects" class="block text-slate-300 hover:text-cyan-400 font-medium mobile-nav-link">Projects</a>
+            <a href="#contact" class="block text-slate-300 hover:text-cyan-400 font-medium mobile-nav-link">Contact</a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="relative z-10 pt-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-32">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="min-h-[85vh] flex flex-col lg:flex-row items-center justify-between gap-12 pt-8">
+            <div class="flex-1 space-y-6 text-center lg:text-left">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border-cyan-500/30 text-xs text-cyan-300 font-mono">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>Available for Senior / Lead Architectural Roles</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight">
+                    Architecting <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-400 bg-clip-text text-transparent">Scalable</span> & Distributed Systems
+                </h1>
+
+                <!-- Dynamic Subtitle Typing simulation -->
+                <div class="text-lg sm:text-xl font-mono text-slate-300 min-h-[3rem] flex items-center justify-center lg:justify-start">
+                    <span id="typing-prefix" class="text-slate-500 font-mono mr-2">&gt;</span>
+                    <span id="typing-text" class="text-cyan-400 border-r-2 border-cyan-400 pr-1 animate-pulse"></span>
+                </div>
+
+                <p class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    Senior Software Engineer with deep expertise in <strong>Java Spring Boot, Microservices Architecture, Cloud Integration (AWS/Azure)</strong>, and high-security PKI cryptographic systems. Driven by API performance optimization and fault-tolerant system design.
+                </p>
+
+                <!-- CTA Actions -->
+                <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                    <a href="#projects" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-sm hover:opacity-90 transition-all shadow-lg shadow-cyan-500/25 flex items-center gap-2">
+                        <span>Explore Enterprise Work</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#contact" class="px-6 py-3.5 rounded-xl glass-card text-slate-200 hover:text-white hover:border-slate-500 font-semibold text-sm transition-all flex items-center gap-2">
+                        <i data-lucide="mail" class="w-4 h-4 text-cyan-400"></i>
+                        <span>Get In Touch</span>
+                    </a>
+                </div>
+
+                <!-- Quick Stats / Badges -->
+                <div class="pt-8 grid grid-cols-2 sm:grid-cols-3 gap-4 border-t border-slate-800/80">
+                    <div>
+                        <div class="text-2xl font-bold font-mono text-white flex items-center justify-center lg:justify-start">
+                            <span>+200%</span>
+                        </div>
+                        <div class="text-xs text-slate-400">API Performance Boost</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold font-mono text-white flex items-center justify-center lg:justify-start">
+                            <span>Enterprise</span>
+                        </div>
+                        <div class="text-xs text-slate-400">PKI & BSS Microservices</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold font-mono text-white flex items-center justify-center lg:justify-start">
+                            <span>Cloud Native</span>
+                        </div>
+                        <div class="text-xs text-slate-400">Docker, K8s, AWS CDK</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Code / Visual Card Element -->
+            <div class="w-full lg:w-[480px] shrink-0">
+                <div class="glass-card rounded-2xl p-6 shadow-2xl relative border-slate-700/50 neon-border-glow transition-all duration-500">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-4">
+                        <div class="flex items-center gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+                        </div>
+                        <span class="text-xs font-mono text-slate-400 flex items-center gap-1">
+                            <i data-lucide="code" class="w-3.5 h-3.5 text-cyan-400"></i> EngineerProfile.java
+                        </span>
+                    </div>
+
+                    <pre class="font-mono text-xs sm:text-sm text-slate-300 leading-relaxed overflow-x-auto"><code><span class="text-purple-400">@Service</span>
+<span class="text-purple-400">@RequiredArgsConstructor</span>
+<span class="text-blue-400">public class</span> <span class="text-yellow-300">SoftwareEngineer</span> {
+
+  <span class="text-blue-400">private final</span> String name = <span class="text-emerald-300">"Muhammad Abdullah"</span>;
+  <span class="text-blue-400">private final</span> String location = <span class="text-emerald-300">"Lahore, Pakistan"</span>;
+  <span class="text-blue-400">private final</span> List&lt;String&gt; coreTech = List.of(
+      <span class="text-emerald-300">"Java Spring Boot"</span>,
+      <span class="text-emerald-300">"Microservices"</span>,
+      <span class="text-emerald-300">"PKI & Cryptography"</span>,
+      <span class="text-emerald-300">"AWS & Cloud Security"</span>
+  );
+
+  <span class="text-purple-400">@EventListener</span>
+  <span class="text-blue-400">public</span> MicroserviceSolution <span class="text-yellow-300">buildScalableApp</span>() {
+      <span class="text-blue-400">return</span> MicroserviceSolution.builder()
+          .highAvailability(<span class="text-orange-400">true</span>)
+          .latencyOptimization(<span class="text-emerald-300">"Up to +200%"</span>)
+          .securityStandards(<span class="text-emerald-300">"Enterprise Grade"</span>)
+          .build();
+  }
+}</code></pre>
+
+                    <!-- Subtle Footer Tag inside Code Window -->
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 flex justify-between items-center text-xs text-slate-400 font-mono">
+                        <span class="flex items-center gap-1 text-emerald-400"><i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> All Checks Passing</span>
+                        <span>v2026.1</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <h2 class="text-xs font-mono text-cyan-400 uppercase tracking-widest">// 01. ABOUT ME</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">Engineering Scalable Architecture with Security & Precision</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 border-slate-800 hover:border-slate-700 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center">
+                        <i data-lucide="cpu" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white">Microservices Architecture</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Extensive experience in decomposing monoliths into high-throughput, fault-tolerant Spring Boot microservices with Spring Cloud, Eureka, and RESTful APIs.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 border-slate-800 hover:border-slate-700 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white">Cryptography & Security</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Engineered Public Key Infrastructure (PKI) and cryptographic solutions at Ascertia, fortifying enterprise applications with robust encryption and Spring Security.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="glass-card p-6 rounded-2xl space-y-4 border-slate-800 hover:border-slate-700 transition-all">
+                    <div class="w-12 h-12 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center">
+                        <i data-lucide="cloud-cog" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white">DevOps & Cloud Orchestration</h4>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Proficient with AWS CDK, Docker, Kubernetes, Terraform, OpenShift, and CI/CD pipelines (Jenkins/GitHub Actions) for reliable zero-downtime deployments.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Education Banner -->
+            <div class="glass-card p-6 sm:p-8 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-6 border-slate-800">
+                <div class="flex items-center gap-5">
+                    <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500/20 to-emerald-500/20 text-cyan-400 flex items-center justify-center shrink-0 border border-cyan-500/30">
+                        <i data-lucide="graduation-cap" class="w-7 h-7"></i>
+                    </div>
+                    <div>
+                        <div class="text-xs font-mono text-cyan-400 uppercase">Education Background</div>
+                        <h4 class="text-xl font-bold text-white">National University of Science & Technology (NUST)</h4>
+                        <p class="text-slate-400 text-sm">Bachelors in Computer Science | Islamabad, Pakistan</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2 text-xs font-mono text-slate-400 bg-slate-900/60 px-4 py-2.5 rounded-xl border border-slate-800">
+                    <i data-lucide="book-open" class="w-4 h-4 text-cyan-400"></i>
+                    <span>Data Structures, AI, Network Security, Mobile Dev</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE TIMELINE SECTION -->
+        <section id="experience" class="space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <h2 class="text-xs font-mono text-cyan-400 uppercase tracking-widest">// 02. CAREER HISTORY</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">Track Record in High-Impact Engineering</h3>
+                <p class="text-slate-400 text-sm">Proven history delivering telecommunication portals, PKI platforms, and fintech solutions.</p>
+            </div>
+
+            <!-- Timeline -->
+            <div class="relative border-l border-slate-800 ml-4 md:ml-32 space-y-12">
+
+                <!-- Timeline Item 1 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-cyan-500 flex items-center justify-center text-cyan-400 shadow-md shadow-cyan-500/30 group-hover:scale-110 transition-transform">
+                        <i data-lucide="briefcase" class="w-4 h-4"></i>
+                    </div>
+                    
+                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-slate-400 text-right w-28">
+                        09/2024 – Present
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-4 border-slate-800/90 hover:border-cyan-500/40 transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-4">
+                            <div>
+                                <span class="md:hidden text-xs font-mono text-cyan-400 block mb-1">09/2024 – Present</span>
+                                <h4 class="text-xl font-bold text-white">Consultant Application Developer</h4>
+                                <div class="text-sm font-medium text-cyan-400">Systems Limited <span class="text-slate-500">• Lahore, Pakistan</span></div>
+                            </div>
+                            <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
+                                Current Role
+                            </span>
+                        </div>
+
+                        <ul class="space-y-2.5 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Contributed to a enterprise Spring Boot microservices BSS project for <strong>Etisalat's B2B portal</strong>, driving scalable telecom solutions.</li>
+                            <li>Spearheaded microservices development using Java & Spring Boot, ensuring reliable REST API inter-service communication.</li>
+                            <li>Integrated secure cloud infrastructure, strengthening system scalability across distributed cloud environments.</li>
+                            <li>Lead architecture design sessions and uphold rigorous software quality standards.</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Spring Boot</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Microservices</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Telecom BSS</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">RESTful APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-600 group-hover:border-cyan-400 flex items-center justify-center text-slate-400 group-hover:text-cyan-400 transition-colors">
+                        <i data-lucide="shield" class="w-4 h-4"></i>
+                    </div>
+
+                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-slate-400 text-right w-28">
+                        03/2024 – 09/2024
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-4 border-slate-800/90 hover:border-slate-700 transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-4">
+                            <div>
+                                <span class="md:hidden text-xs font-mono text-cyan-400 block mb-1">03/2024 – 09/2024</span>
+                                <h4 class="text-xl font-bold text-white">Senior Software Engineer</h4>
+                                <div class="text-sm font-medium text-cyan-400">Ascertia <span class="text-slate-500">• Lahore, Pakistan</span></div>
+                            </div>
+                            <span class="inline-flex items-center gap-1 text-xs font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-md border border-emerald-500/20">
+                                <i data-lucide="lock" class="w-3 h-3"></i> Cryptography / PKI
+                            </span>
+                        </div>
+
+                        <ul class="space-y-2.5 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Pioneered cryptographic solutions within Ascertia's Public Key Infrastructure (PKI) flagship products, elevating security in digital transactions.</li>
+                            <li>Utilized Java, Struts, Spring Boot, Servlets, and JSP to design cryptographic applications compliant with industry standards.</li>
+                            <li>Enhanced core cryptographic algorithms and protocols, safeguarding high-stakes sensitive data.</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Java</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">PKI</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Cryptographic Protocols</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Spring Security</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-600 group-hover:border-cyan-400 flex items-center justify-center text-slate-400 group-hover:text-cyan-400 transition-colors">
+                        <i data-lucide="zap" class="w-4 h-4"></i>
+                    </div>
+
+                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-slate-400 text-right w-28">
+                        12/2022 – 03/2024
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-4 border-slate-800/90 hover:border-slate-700 transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-4">
+                            <div>
+                                <span class="md:hidden text-xs font-mono text-cyan-400 block mb-1">12/2022 – 03/2024</span>
+                                <h4 class="text-xl font-bold text-white">Software Integration Engineer</h4>
+                                <div class="text-sm font-medium text-cyan-400">Evamp & Saanga <span class="text-slate-500">• Islamabad, Pakistan</span></div>
+                            </div>
+                            <span class="inline-flex items-center gap-1 text-xs font-mono text-amber-300 bg-amber-500/10 px-2.5 py-1 rounded-md border border-amber-500/20">
+                                <i data-lucide="trending-up" class="w-3 h-3"></i> +200% Perf Metric
+                            </span>
+                        </div>
+
+                        <ul class="space-y-2.5 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Contributed key integrations to the Dealer Management System for <strong>Salam Telecom (Saudi Arabia)</strong>, achieving a <strong>200% performance boost</strong> on API throughput.</li>
+                            <li>Engineered integration solutions for Ericsson's ECR project and optimized API Gateway workflows in Software AG webMethods.</li>
+                            <li>Fortified applications with Spring Security and Spring Cloud; built fully automated CI/CD pipelines.</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">webMethods API Gateway</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Spring Cloud</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">CI/CD</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">API Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="relative pl-8 md:pl-10 group">
+                    <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-slate-900 border-2 border-slate-600 group-hover:border-cyan-400 flex items-center justify-center text-slate-400 group-hover:text-cyan-400 transition-colors">
+                        <i data-lucide="globe" class="w-4 h-4"></i>
+                    </div>
+
+                    <div class="hidden md:block absolute -left-36 top-2 text-xs font-mono text-slate-400 text-right w-28">
+                        01/2022 – 12/2022
+                    </div>
+
+                    <div class="glass-card p-6 sm:p-8 rounded-2xl space-y-4 border-slate-800/90 hover:border-slate-700 transition-all">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-800/80 pb-4">
+                            <div>
+                                <span class="md:hidden text-xs font-mono text-cyan-400 block mb-1">01/2022 – 12/2022</span>
+                                <h4 class="text-xl font-bold text-white">Full Stack Engineer (Remote)</h4>
+                                <div class="text-sm font-medium text-cyan-400">Manaknight Digital <span class="text-slate-500">• Toronto, Canada</span></div>
+                            </div>
+                            <span class="inline-flex items-center gap-1 text-xs font-mono text-purple-300 bg-purple-500/10 px-2.5 py-1 rounded-md border border-purple-500/20">
+                                Global Remote
+                            </span>
+                        </div>
+
+                        <ul class="space-y-2.5 text-slate-300 text-sm leading-relaxed list-disc list-inside">
+                            <li>Pivotal developer for <strong>Cryptohuntgo</strong> (crypto treasure hunt platform), driving a <strong>150% revenue growth</strong>.</li>
+                            <li>Engineered <strong>Gotivation</strong> (fitness platform), driving <strong>250% user growth</strong> through responsive features and performance tuning.</li>
+                            <li>Involved across full SDLC from requirement gathering through deployment and customer demonstrations.</li>
+                        </ul>
+
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Full Stack</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Crypto Platform</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">Node/React</span>
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-800 text-slate-300">SQL/NoSQL</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- TECHNICAL SKILLS FILTER SECTION -->
+        <section id="skills" class="space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <h2 class="text-xs font-mono text-cyan-400 uppercase tracking-widest">// 03. TECHNICAL MATRIX</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">Interactive Tech Ecosystem</h3>
+                <p class="text-slate-400 text-sm">Filter tools, frameworks, and cloud solutions by technical domain.</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2 font-mono text-xs" id="skill-filters">
+                <button class="skill-btn active-skill-btn px-4 py-2.5 rounded-xl border border-cyan-500 bg-cyan-500/20 text-cyan-300 transition-all" data-category="all">
+                    All Technologies
+                </button>
+                <button class="skill-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700 hover:text-white transition-all" data-category="backend">
+                    Backend & Core
+                </button>
+                <button class="skill-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700 hover:text-white transition-all" data-category="cloud">
+                    Cloud & DevOps
+                </button>
+                <button class="skill-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700 hover:text-white transition-all" data-category="frontend">
+                    Frontend & Mobile
+                </button>
+                <button class="skill-btn px-4 py-2.5 rounded-xl border border-slate-800 bg-slate-900/60 text-slate-400 hover:border-slate-700 hover:text-white transition-all" data-category="database">
+                    Databases
+                </button>
+            </div>
+
+            <!-- Skills Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" id="skills-grid">
+                
+                <!-- Backend -->
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="backend">
+                    <div class="w-9 h-9 rounded-lg bg-orange-500/10 text-orange-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="coffee" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">Java</div>
+                        <div class="text-xs text-slate-400 font-mono">Expert / Core</div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="backend">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="layers" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">Spring Boot</div>
+                        <div class="text-xs text-slate-400 font-mono">Microservices</div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="backend">
+                    <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">Spring Security</div>
+                        <div class="text-xs text-slate-400 font-mono">Auth & PKI</div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="backend">
+                    <div class="w-9 h-9 rounded-lg bg-yellow-500/10 text-yellow-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="code-2" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">Python</div>
+                        <div class="text-xs text-slate-400 font-mono">ML / Scripting</div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="backend">
+                    <div class="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="binary" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">Clojure & Scala</div>
+                        <div class="text-xs text-slate-400 font-mono">Functional Paradigm</div>
+                    </div>
+                </div>
+
+                <!-- Cloud & DevOps -->
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="cloud">
+                    <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="cloud" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">AWS Ecosystem</div>
+                        <div class="text-xs text-slate-400 font-mono">EC2, S3, Lambda, CDK</div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="cloud">
+                    <div class="w-9 h-9 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="box" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">Docker & K8s</div>
+                        <div class="text-xs text-slate-400 font-mono">Containers / Orchestration</div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="cloud">
+                    <div class="w-9 h-9 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">Terraform & OpenShift</div>
+                        <div class="text-xs text-slate-400 font-mono">IaC & Kubernetes</div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="cloud">
+                    <div class="w-9 h-9 rounded-lg bg-red-500/10 text-red-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="git-branch" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">CI/CD & Jenkins</div>
+                        <div class="text-xs text-slate-400 font-mono">Automated Pipelines</div>
+                    </div>
+                </div>
+
+                <!-- Frontend & Mobile -->
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="frontend">
+                    <div class="w-9 h-9 rounded-lg bg-sky-500/10 text-sky-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="smartphone" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">Flutter</div>
+                        <div class="text-xs text-slate-400 font-mono">Cross-Platform Apps</div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="frontend">
+                    <div class="w-9 h-9 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="atom" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">React & Angular</div>
+                        <div class="text-xs text-slate-400 font-mono">Modern SPAs</div>
+                    </div>
+                </div>
+
+                <!-- Databases -->
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="database">
+                    <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="database" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">PostgreSQL / MySQL</div>
+                        <div class="text-xs text-slate-400 font-mono">Relational DBs</div>
+                    </div>
+                </div>
+
+                <div class="skill-card glass-card p-4 rounded-xl border-slate-800 flex items-center gap-3" data-category="database">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0">
+                        <i data-lucide="server" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <div class="font-bold text-slate-100 text-sm">MongoDB & Oracle</div>
+                        <div class="text-xs text-slate-400 font-mono">NoSQL & Enterprise DB</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- PROJECTS GALLERY SECTION -->
+        <section id="projects" class="space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <h2 class="text-xs font-mono text-cyan-400 uppercase tracking-widest">// 04. FEATURED PROJECTS</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">Innovation & Architectural Solutions</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Project 1 -->
+                <div class="glass-card rounded-2xl overflow-hidden border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col group">
+                    <div class="h-48 bg-gradient-to-br from-cyan-950 via-slate-900 to-emerald-950 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-cyan-500/20 transition-all"></div>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-cyan-500/20 text-cyan-300 border border-cyan-500/30">Mobile App</span>
+                            <i data-lucide="activity" class="w-5 h-5 text-cyan-400"></i>
+                        </div>
+                        <div class="z-10">
+                            <h4 class="text-2xl font-bold text-white group-hover:text-cyan-400 transition-colors">Fithub</h4>
+                            <p class="text-xs text-slate-300 font-mono">Flutter & Firebase Platform</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Cross-platform wellness ecosystem bridging users with gym facilities, virtual personal trainers, nutritionists, and mental health psychologists seamlessly.
+                        </p>
+                        <div class="space-y-3 pt-2">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300">Flutter</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300">Firebase</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300">Dart</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="glass-card rounded-2xl overflow-hidden border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col group">
+                    <div class="h-48 bg-gradient-to-br from-slate-950 via-blue-950 to-purple-950 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-purple-500/20 text-purple-300 border border-purple-500/30">Machine Learning</span>
+                            <i data-lucide="trending-up" class="w-5 h-5 text-purple-400"></i>
+                        </div>
+                        <div class="z-10">
+                            <h4 class="text-2xl font-bold text-white group-hover:text-purple-300 transition-colors">Stock Price Predictor</h4>
+                            <p class="text-xs text-slate-300 font-mono">LSTM Deep Learning Model</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Machine learning application leveraging LSTM (Long Short-Term Memory) neural networks to analyze sequential historical stock data and assist traders with accurate price forecasting.
+                        </p>
+                        <div class="space-y-3 pt-2">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300">Python</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300">LSTM / Keras</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300">Data Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="glass-card rounded-2xl overflow-hidden border-slate-800 hover:border-cyan-500/50 transition-all flex flex-col group">
+                    <div class="h-48 bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 p-6 flex flex-col justify-between relative overflow-hidden">
+                        <div class="absolute -right-8 -bottom-8 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
+                        <div class="flex justify-between items-center z-10">
+                            <span class="px-2.5 py-1 rounded-md text-xs font-mono bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Desktop Enterprise</span>
+                            <i data-lucide="building" class="w-5 h-5 text-emerald-400"></i>
+                        </div>
+                        <div class="z-10">
+                            <h4 class="text-2xl font-bold text-white group-hover:text-emerald-400 transition-colors">Hostel Management</h4>
+                            <p class="text-xs text-slate-300 font-mono">Java Swing & MySQL</p>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Streamlined university administrative system handling student registration, room allocation, attendance tracking, fee management, and maintenance ticketing.
+                        </p>
+                        <div class="space-y-3 pt-2">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300">Java Swing</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300">MySQL</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-mono bg-slate-800 text-slate-300">JDBC</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Certifications Showcase -->
+            <div class="pt-8">
+                <h4 class="text-sm font-mono text-cyan-400 mb-6 flex items-center gap-2">
+                    <i data-lucide="award" class="w-4 h-4"></i> Verified Certifications
+                </h4>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="glass-card p-5 rounded-xl border-slate-800 flex items-center justify-between">
+                        <div>
+                            <div class="font-bold text-white text-sm">Master Microservices with Spring Boot & Spring Cloud</div>
+                            <div class="text-xs text-slate-400 font-mono">Udemy Certification</div>
+                        </div>
+                        <i data-lucide="external-link" class="w-4 h-4 text-slate-500"></i>
+                    </div>
+                    <div class="glass-card p-5 rounded-xl border-slate-800 flex items-center justify-between">
+                        <div>
+                            <div class="font-bold text-white text-sm">Python for Everybody</div>
+                            <div class="text-xs text-slate-400 font-mono">Coursera / University of Michigan</div>
+                        </div>
+                        <i data-lucide="external-link" class="w-4 h-4 text-slate-500"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="space-y-12 pb-16">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <h2 class="text-xs font-mono text-cyan-400 uppercase tracking-widest">// 05. GET IN TOUCH</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold text-white">Let's Build Extraordinary Systems</h3>
+                <p class="text-slate-400 text-sm">Open to senior engineering, microservices leadership, or technical consulting roles.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Direct Info Panel -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="glass-card p-8 rounded-2xl space-y-6 border-slate-800">
+                        <h4 class="text-xl font-bold text-white">Contact Information</h4>
+
+                        <!-- Email Box -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 mt-1">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div class="flex-1 overflow-hidden">
+                                <div class="text-xs font-mono text-slate-400">Email Address</div>
+                                <a href="mailto:abdullahmushtaq62@gmail.com" class="text-sm font-semibold text-white hover:text-cyan-400 truncate block transition-colors">
+                                    abdullahmushtaq62@gmail.com
+                                </a>
+                                <button onclick="copyToClipboard('abdullahmushtaq62@gmail.com', 'Email copied!')" class="text-xs text-cyan-400 hover:underline mt-1 inline-flex items-center gap-1 font-mono">
+                                    <i data-lucide="copy" class="w-3 h-3"></i> Copy Email
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Phone Box -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 mt-1">
+                                <i data-lucide="phone" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-mono text-slate-400">Phone / WhatsApp</div>
+                                <a href="tel:+923316229144" class="text-sm font-semibold text-white hover:text-emerald-400 transition-colors">
+                                    +92 331 6229144
+                                </a>
+                                <div>
+                                    <button onclick="copyToClipboard('+923316229144', 'Phone number copied!')" class="text-xs text-emerald-400 hover:underline mt-1 inline-flex items-center gap-1 font-mono">
+                                        <i data-lucide="copy" class="w-3 h-3"></i> Copy Phone
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Location Box -->
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center shrink-0 mt-1">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs font-mono text-slate-400">Location</div>
+                                <div class="text-sm font-semibold text-white">Lahore, Pakistan</div>
+                                <div class="text-xs text-slate-400">Open to Global Remote Opportunities</div>
+                            </div>
+                        </div>
+
+                        <!-- Social Quick Links -->
+                        <div class="pt-4 border-t border-slate-800 flex items-center gap-4">
+                            <a href="https://github.com" target="_blank" rel="noopener" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white hover:border-slate-600 transition-all">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener" class="p-3 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-cyan-400 hover:border-cyan-500/40 transition-all">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Form -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="glass-card p-8 rounded-2xl space-y-5 border-slate-800 relative">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-mono text-slate-300">Your Name</label>
+                                <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition-colors">
+                            </div>
+                            <div class="space-y-1.5">
+                                <label class="text-xs font-mono text-slate-300">Email Address</label>
+                                <input type="email" required placeholder="john@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition-colors">
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-mono text-slate-300">Subject</label>
+                            <input type="text" required placeholder="Senior Engineer Opportunity / Collaboration" class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition-colors">
+                        </div>
+
+                        <div class="space-y-1.5">
+                            <label class="text-xs font-mono text-slate-300">Message</label>
+                            <textarea rows="4" required placeholder="Hi Abdullah, I would like to discuss..." class="w-full px-4 py-3 rounded-xl bg-slate-900/80 border border-slate-800 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 transition-colors resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 font-bold text-sm hover:opacity-95 transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2">
+                            <i data-lucide="send" class="w-4 h-4"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 py-8 text-center text-xs text-slate-400 font-mono relative z-10 glass-nav">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div>
+                &copy; 2026 Muhammad Abdullah. Crafted for Enterprise Excellence.
+            </div>
+            <div class="flex items-center gap-4 text-slate-400">
+                <span>Java 17+</span>
+                <span>•</span>
+                <span>Spring Boot</span>
+                <span>•</span>
+                <span>AWS & Microservices</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Element -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 glass-card border border-cyan-500/50 px-5 py-3.5 rounded-xl shadow-2xl flex items-center gap-3 text-sm text-white font-mono pointer-events-none">
+        <i data-lucide="check-circle" class="w-5 h-5 text-cyan-400"></i>
+        <span id="toast-message">Notification message</span>
+    </div>
+
+    <!-- Application Script -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Dynamic Typing Animation
+        const roles = [
+            "Senior Microservices Specialist",
+            "Java & Spring Boot Engineer",
+            "Public Key Infrastructure (PKI) Dev",
+            "Cloud Native & AWS Architect"
+        ];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typingElement = document.getElementById("typing-text");
+
+        function typeEffect() {
+            const currentRole = roles[roleIndex];
+            
+            if (isDeleting) {
+                typingElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 2200; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeEffect, typeSpeed);
+        }
+
+        // Start typing on load
+        document.addEventListener("DOMContentLoaded", () => {
+            typeEffect();
+        });
+
+        // Skill Category Filter Logic
+        const filterBtns = document.querySelectorAll(".skill-btn");
+        const skillCards = document.querySelectorAll(".skill-card");
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                // Remove active class
+                filterBtns.forEach(b => {
+                    b.classList.remove("active-skill-btn", "border-cyan-500", "bg-cyan-500/20", "text-cyan-300");
+                    b.classList.add("border-slate-800", "bg-slate-900/60", "text-slate-400");
+                });
+
+                // Set current active
+                btn.classList.add("active-skill-btn", "border-cyan-500", "bg-cyan-500/20", "text-cyan-300");
+                btn.classList.remove("border-slate-800", "bg-slate-900/60", "text-slate-400");
+
+                const category = btn.getAttribute("data-category");
+
+                skillCards.forEach(card => {
+                    if (category === "all" || card.getAttribute("data-category") === category) {
+                        card.style.display = "flex";
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
+            });
+        });
+
+        // Copy to Clipboard Utility
+        function copyToClipboard(text, message) {
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(message);
+            } catch (err) {
+                console.error('Fallback copy failed', err);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        // Toast Notification System
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            const toastMessage = document.getElementById("toast-message");
+            toastMessage.textContent = msg;
+            toast.classList.remove("translate-y-20", "opacity-0");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            setTimeout(() => {
+                toast.classList.remove("translate-y-0", "opacity-100");
+                toast.classList.add("translate-y-20", "opacity-0");
+            }, 3000);
+        }
+
+        // Contact Form Handling
+        const contactForm = document.getElementById("contact-form");
+        if (contactForm) {
+            contactForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                showToast("Message sent! I will respond promptly.");
+                contactForm.reset();
+            });
+        }
+
+        // Mobile Menu Drawer Toggle
+        const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.addEventListener("click", () => {
+                    mobileMenu.classList.add("hidden");
+                });
+            });
+        }
+    </script>
+</body>
+</html>
